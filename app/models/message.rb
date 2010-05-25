@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
 
-	acts_as_indexed :fields => [:title, :body]
+  acts_as_indexed :fields => [:title, :body]
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
 
   validates_presence_of :title

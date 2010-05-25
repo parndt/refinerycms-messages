@@ -1,16 +1,16 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(message) -%>">
-	<span class='title'>
-		<span class='actions'>
-			<%= link_to refinery_icon_tag("application_go.png"), message_url(message), 
-					:title => 'View this message<br/><em>Opens in a new window</em>',
-					:target => "_blank" %>
-			<%= link_to refinery_icon_tag("application_edit.png"), edit_admin_message_path(message),
-			 		:title => 'Edit this message' %>
-			<%= link_to refinery_icon_tag("delete.png"), admin_message_path(message),
-					:confirm => 'Are you sure you want to remove this message forever?',
-					:class => "cancel", :method => :delete,
-					:title => 'Remove this message forever' %>
-		</span>
-		<%=h message.title %> <span class="preview"> - <%= message.message_date.strftime("%A, %d %B %Y#{ "%I:%M %p" if RefinerySetting.find_or_set(:show_time_in_message_date, false)}") %></span>
-	</span>
+  <span class='title'>
+    <span class='actions'>
+      <%= link_to refinery_icon_tag("application_go.png"), message_url(message),
+          :title => 'View this message<br/><em>Opens in a new window</em>',
+          :target => "_blank" %>
+      <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_message_path(message),
+           :title => 'Edit this message' %>
+      <%= link_to refinery_icon_tag("delete.png"), admin_message_path(message),
+          :confirm => 'Are you sure you want to remove this message forever?',
+          :class => "cancel", :method => :delete,
+          :title => 'Remove this message forever' %>
+    </span>
+    <%=h message.title %> <span class="preview"> - <%= message.message_date.strftime("%A, %d %B %Y#{ "%I:%M %p" if RefinerySetting.find_or_set(:show_time_in_message_date, false)}") %></span>
+  </span>
 </li>

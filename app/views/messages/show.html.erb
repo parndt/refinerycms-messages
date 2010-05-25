@@ -8,20 +8,24 @@
   <p style='margin-top: 0px'>
     <small><%= @message.message_date.strftime("%A, %d %B %Y#{ "%I:%M %p" if RefinerySetting.find_or_set(:show_time_in_message_date, false)}") %></small>
   </p>
-	<%= @message.body %>
+  <%= @message.body %>
 
-	<%= link_to "Download now", @message.resource.public_filename, :target => "_blank" %>
+  <%= link_to "Download now", @message.resource.public_filename, :target => "_blank" %>
 <% end %>
 
 <% content_for :body_content_right do %>
   <% if @messages.size > 1 %>
-  	<h2>Other Messages</h2>
-  	<ul id="messages">
-  		<% @messages.each do |message| %>
-  			<li>
-  				<%= link_to message.title, message_url(message) %>
-  			</li>
-  		<% end %>
-  	</ul>
-	<% end %>
+    <h2>Other Messages</h2>
+    <ul id="messages">
+      <% @messages.each do |message| %>
+        <li>
+          <%= link_to message.title, message_url(message) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
+
+<div class='messages message'>
+  <%= render :partial => "/shared/content_page" %>
+</div>
