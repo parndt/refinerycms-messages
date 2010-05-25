@@ -11,7 +11,10 @@
           </small>
         </p>
         <p>
-          <%= truncate(message.body, :length => 200, :omission => " ... #{link_to "Read more", message_url(message)}", :preserve_html_tags => true) %>
+          <%= truncate  message.body,
+                        :length => 200,
+                        :omission => " ... #{link_to "Read more", message_url(message)}",
+                        :preserve_html_tags => true %>
         </p>
       </li>
     <% end %>
