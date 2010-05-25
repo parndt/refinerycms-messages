@@ -1,0 +1,39 @@
+<%= error_messages_for :message %>
+<% form_for [:admin, @message] do |f| %>
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title, :size => 67, :class => "larger" %>
+  </div>
+  <div class='field'>
+		<%= f.label :message_date %>
+		<%= f.datetime_select :message_date %>
+	</div>
+  <div class='field'>
+    <%= f.label :content %>
+    <p>
+      Write some content that describes this message.
+    </p>
+    <%= f.text_area :content, :rows => 10, :cols => 140, :class => 'wymeditor' %>
+  </div>
+  <div class='field'>
+    <%= f.label :resource_id, "Message File" %>
+    <%= render :partial => "/shared/admin/resource_picker", :locals => 
+      {
+        :f => f, 
+        :field => :resource_id, 
+        :resource => @message.resource,
+        :description => "message file"
+      } 
+    %>
+  </div>
+  <div class='field'>
+    <label>Draft</label>
+    <%= f.check_box :draft %>
+    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
+  </div>
+  <div class='form-actions'>
+    <%= f.submit 'Save', :id => "submit_button", :class => "wymupdate" %> 
+    or 
+    <%= link_to "Cancel", admin_messages_url, :class => "close_dialog", :id => "cancel_button" %>
+  </div>
+<% end -%>

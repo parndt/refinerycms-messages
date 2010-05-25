@@ -1,0 +1,19 @@
+<% content_for :body_content_left do %>
+	<ul id="messages">
+	  <%= will_paginate @messages %>
+		<% @messages.each do |message| %>
+			<li>
+				<%= link_to message.title, message_url(message) %>
+				<p style='margin: 0px'>
+          <small>
+            <%= message.message_date.strftime("%A, %d %B %Y#{ "%I:%M %p" if RefinerySetting.find_or_set(:show_time_in_message_date, false)}") %>
+          </small>
+        </p>
+        <p>
+  				<%= truncate(message.body, :length => 200, :omission => " ... #{link_to "Read more", message_url(message)}", :preserve_html_tags => true) %>
+  			</p>
+			</li>
+		<% end %>
+    <%= will_paginate @messages %>
+	</ul>
+<% end %>
